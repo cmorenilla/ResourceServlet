@@ -26,6 +26,7 @@ import net.opentext.resource.model.PhysicalResource;
 import net.opentext.resource.repositories.PhysicalResourceRepository;
 
 @Controller
+@RequestMapping("/resources")
 public class ResourceController {
 
     public static final String FILE_SEPARATOR = System.getProperty("file.separator");
@@ -42,7 +43,7 @@ public class ResourceController {
     }
 
     @RequestMapping("/getResourceThumbnail")
-    public void getResourceThumbnail(@RequestParam("idObject") String idObject,
+    public void getResourceThumbnail(@RequestParam("objectID") String idObject,
             HttpServletResponse response) {
         try {
             PhysicalResource resource;
@@ -66,7 +67,7 @@ public class ResourceController {
     }
 
     @RequestMapping("/getResource")
-    public void getResource(@RequestParam("idObject") String idObject,
+    public void getResource(@RequestParam("objectID") String idObject,
             HttpServletResponse response) {
         try {
             PhysicalResource resource;
