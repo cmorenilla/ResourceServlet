@@ -270,9 +270,10 @@ public class OracleJdbcPhysicalRepository implements PhysicalResourceRepository 
         
         aux = pathFile.substring(pathFile.indexOf("'providerInfo'='")+16);
         physicalResource.setProviderInfo(aux.substring(0, aux.indexOf("'")) );
-        aux = pathFile.substring(pathFile.indexOf("'subProviderName'='")+18);
-        physicalResource.setSubProviderName(aux.substring(0, aux.indexOf("'")) );
+        aux = pathFile.substring(pathFile.indexOf("'subProviderName'='")+19);
+        physicalResource.setSubProviderName(aux.substring(0, aux.lastIndexOf("'")) );
         String path = physicalResource.getPhysicalPath() + physicalResource.getProviderInfo();
+        logger.info("readPathFile:" + path);
         File file = new File(path);
         
         if (!file.exists() || !file.canRead()) {
