@@ -26,7 +26,6 @@ import net.opentext.resource.model.PhysicalResource;
 import net.opentext.resource.repositories.PhysicalResourceRepository;
 
 @Controller
-@RequestMapping("/resources")
 public class ResourceController {
 
     public static final String FILE_SEPARATOR = System.getProperty("file.separator");

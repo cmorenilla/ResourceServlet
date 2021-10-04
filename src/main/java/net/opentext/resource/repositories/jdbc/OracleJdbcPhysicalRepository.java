@@ -261,17 +261,19 @@ public class OracleJdbcPhysicalRepository implements PhysicalResourceRepository 
     }
 
     private File readPathFile(PhysicalResource physicalResource, String fs, String pathFile) throws FileNotFoundException {        
-        
+        String aux = "";
         String[] fileSystem = fs.split(",");
-        physicalResource.setPhysicalPath( fileSystem[1].substring(1, fileSystem[1].length()-1) );
-        physicalResource.setStorageProviderName(fileSystem[0].substring(1, fileSystem[1].length()-1));
+
+        physicalResource.setPhysicalPath( fileSystem[1].substring(1, fileSystem[1].length()-2) );
+
+        physicalResource.setStorageProviderName( fileSystem[0].substring(2, fileSystem[0].length()-1) );
         
-        String aux = pathFile.substring(pathFile.indexOf("'providerInfo'='"));
+        aux = pathFile.substring(pathFile.indexOf("'providerInfo'='")+16);
         physicalResource.setProviderInfo(aux.substring(0, aux.indexOf("'")) );
-        aux = pathFile.substring(pathFile.indexOf("'subProviderName'='"));
+        aux = pathFile.substring(pathFile.indexOf("'subProviderName'='")+18);
         physicalResource.setSubProviderName(aux.substring(0, aux.indexOf("'")) );
-        
-        File file = new File(physicalResource.getPhysicalPath() + physicalResource.getProviderInfo());
+        String path = physicalResource.getPhysicalPath() + physicalResource.getProviderInfo();
+        File file = new File(path);
         
         if (!file.exists() || !file.canRead()) {
             throw new FileNotFoundException ("ERROR: File not exists");
