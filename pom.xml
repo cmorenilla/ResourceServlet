@@ -20,7 +20,7 @@
                 <env>opentext</env>
             </properties>
             <build>
-                <finalName>CellnexResourceServlet</finalName>
+                <finalName>ResourceServlet</finalName>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
