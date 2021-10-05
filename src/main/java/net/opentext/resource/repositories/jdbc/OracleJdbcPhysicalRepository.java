@@ -40,7 +40,7 @@ public class OracleJdbcPhysicalRepository implements PhysicalResourceRepository 
 
     private static final int IMAGE_MAX_WIDTH = 800;
     private static final int IMAGE_MAX_HEIGHT = 700;
-    private static final String IMAGE_OUTPUT_FORMAT = "png";
+    private static final String IMAGE_OUTPUT_FORMAT = ".jpg";
 
     public OracleJdbcPhysicalRepository() {
     }
@@ -178,6 +178,10 @@ public class OracleJdbcPhysicalRepository implements PhysicalResourceRepository 
             ResultSet resultSet = statement.executeQuery();
 
             physicalResource = createPhysicalResource(physicalResource, resultSet);
+            
+            // Cambiamos extension al fichero.
+            physicalResource.setFileName(physicalResource.getFileName() + IMAGE_OUTPUT_FORMAT);
+            
         } finally {
             commit(connection, statement);
             close(connection, statement);
