@@ -47,10 +47,8 @@ public class ResourceController {
         try {
             PhysicalResource resource;
             
-            response.setContentType("image/jpg");
-            
             resource = repository.findThumbnailById(idObject);
-            repository.getImageFromResource(idObject, response.getOutputStream());
+            response.setContentType(resource.getMimeType());
             
             doResponse(resource, response);
         } catch (Exception e) {
@@ -72,6 +70,8 @@ public class ResourceController {
             PhysicalResource resource;
 
             resource = repository.findContentById(idObject);
+            //repository.getImageFromResource(idObject, response.getOutputStream());
+            
             doResponse(resource, response);
         } catch (Exception e) {
             try {

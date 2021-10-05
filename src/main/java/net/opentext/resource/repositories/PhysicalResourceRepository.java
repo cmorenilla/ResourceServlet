@@ -13,6 +13,6 @@ public interface PhysicalResourceRepository {
 
     abstract PhysicalResource findContentById(String idobject) throws SQLException, FileNotFoundException;
 
-    public void getImageFromResource(String idObject, OutputStream outputStream);
+    //void getImageFromResource(String idObject, OutputStream outputStream);
 
 }

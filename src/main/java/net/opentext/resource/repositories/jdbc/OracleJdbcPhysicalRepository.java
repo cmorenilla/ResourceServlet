@@ -232,7 +232,7 @@ public class OracleJdbcPhysicalRepository implements PhysicalResourceRepository 
         return physicalResource;
     }
     
-
+/*
     @Override
     public void getImageFromResource(String resourceId, OutputStream output) {
         try {
@@ -245,7 +245,8 @@ public class OracleJdbcPhysicalRepository implements PhysicalResourceRepository 
             //TODO Throw Exception
         }
     }
-
+*/    
+/*
     private static BufferedImage toBufferedImage(Image src) {
         if (src instanceof BufferedImage) {
             return (BufferedImage) src;
@@ -259,7 +260,7 @@ public class OracleJdbcPhysicalRepository implements PhysicalResourceRepository 
         g2.dispose();
         return dest;
     }
-
+*/
     private File readPathFile(PhysicalResource physicalResource, String fs, String pathFile) throws FileNotFoundException {        
         String aux = "";
         String[] fileSystem = fs.split(",");
