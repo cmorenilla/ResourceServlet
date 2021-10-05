@@ -48,7 +48,7 @@ public class ResourceController {
             PhysicalResource resource;
             
             resource = repository.findThumbnailById(idObject);
-            response.setContentType(resource.getMimeType());
+            response.setContentType("image/jpg");
             
             doResponse(resource, response);
         } catch (Exception e) {
