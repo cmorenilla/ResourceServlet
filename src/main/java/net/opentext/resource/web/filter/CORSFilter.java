@@ -1,16 +1,11 @@
 package net.opentext.resource.web.filter;
 
-import java.io.IOException;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
+import org.apache.log4j.Logger;
+
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.log4j.Logger;
+import java.io.IOException;
 
 public class CORSFilter implements Filter {
 
@@ -32,7 +27,7 @@ public class CORSFilter implements Filter {
             throws IOException, ServletException {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletRequest) servletResponse;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
         log.info("CORSFilter HTTP Request: " + request.getMethod());
 
         // Authorize (allow) all domains to consume the content
@@ -43,7 +38,7 @@ public class CORSFilter implements Filter {
                 "Content-Disposition,Content-Description,Origin,X-Requested-With,sessionId");
         response.addHeader("Access-Control-Allow-Credentials","true");
 
-        HttpServletResponse resp = (HttpServletRequest) servletResponse;
+        HttpServletResponse resp = (HttpServletResponse) servletResponse;
 
         // For HTTP OPTIONS verb/method reply with ACCEPTED status code -- per CORS handshake
         if (request.getMethod().equals("OPTIONS")) {
